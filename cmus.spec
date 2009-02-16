@@ -22,6 +22,8 @@ BuildRequires:  libmpcdec-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  wavpack-devel
 
+BuildRequires:  ncurses-devel
+
 
 %description
 cmus is a small and fast text mode music player for Linux and many
