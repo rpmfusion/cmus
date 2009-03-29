@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -72,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 2.2.0-4
+- rebuild for new F11 features
+
 * Wed Dec 17 2008 Conrad Meyer <konrad@tylerc.org> - 2.2.0-3
 - Make more verbosely (V=2).
 
