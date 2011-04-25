@@ -5,7 +5,7 @@ Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://cmus.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/cmus/cmus-v${version}.tar.bz2
+Source0:        http://downloads.sourceforge.net/cmus/cmus-v%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel
