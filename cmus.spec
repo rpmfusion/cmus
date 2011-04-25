@@ -1,13 +1,11 @@
 Name:           cmus
-Version:        2.2.0
-Release:        5%{?dist}
+Version:        2.3.5
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://cmus.sourceforge.net/
-Source0:        http://mirror.greaterscope.net/cmus/cmus-%{version}.tar.bz2
-# This comes from Gentoo Bugzilla #218105:
-Patch0:         cmus-2.2.0-new-ffmpeg.patch
+Source0:        http://downloads.sourceforge.net/cmus/cmus-v%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel
@@ -21,6 +19,7 @@ BuildRequires:  libmp4v2-devel
 BuildRequires:  libmpcdec-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  wavpack-devel
+BuildRequires:  pulseaudio-libs-devel
 
 BuildRequires:  ncurses-devel
 
@@ -32,18 +31,14 @@ other UNIX-like operating systems.
 
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n %{name}-v%{version}
 
 
 %build
 ./configure prefix=%{_prefix} bindir=%{_bindir} datadir=%{_datadir} \
   libdir=%{_libdir} mandir=%{_mandir} \
   exampledir=%{_datadir}/%{name}/examples \
-  CONFIG_FLAC=y CONFIG_MAD=y CONFIG_MODPLUG=y CONFIG_MIKMOD=n \
-  CONFIG_MPC=y CONFIG_VORBIS=y CONFIG_WAV=y CONFIG_WAVPACK=y \
-  CONFIG_MP4=y CONFIG_AAC=y CONFIG_FFMPEG=y CONFIG_ALSA=y \
-  CONFIG_AO=y CONFIG_ARTS=n CONFIG_OSS=n CONFIG_SUN=n \
+  CONFIG_ROAR=n CONFIG_ARTS=n CONFIG_SUN=n \
   CFLAGS="%{optflags}"
 make %{?_smp_mflags} V=2
 
@@ -69,9 +64,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_mandir}/man1/cmus-remote.1*
 %{_mandir}/man1/cmus.1*
+%{_mandir}/man7/cmus-tutorial.7*
 
 
 %changelog
+* Wed Apr 20 2011 Johannes Weißl <jargon@molb.org> - 2.3.5-1
+- New upstream release
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 2.2.0-4
 - rebuild for new F11 features
 
