@@ -34,7 +34,7 @@ other UNIX-like operating systems.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch0
+%patch0 -p1
 
 
 %build
