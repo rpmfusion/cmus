@@ -1,0 +1,32 @@
+From 633336917be76df74c628c4f1d230fad0b161f62 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Johannes=20Wei=C3=9Fl?= <jargon@molb.org>
+Date: Thu, 12 May 2011 00:42:41 +0200
+Subject: [PATCH] configure: fix ffmpeg header detection
+
+In Fedora, ffmpeg headers are here:
+/usr/include/ffmpeg/libavformat/avformat.h
+---
+ configure |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 29bb911..15870d4 100755
+--- a/configure
++++ b/configure
+@@ -322,11 +322,11 @@ check_ffmpeg()
+ {
+ 	HAVE_FFMPEG_AVCODEC_H=y
+ 	pkg_config FFMPEG "libavformat" || return $?
+-	if check_header "libavcodec/avcodec.h"
++	if check_header "libavcodec/avcodec.h" $FFMPEG_CFLAGS
+ 	then
+ 		HAVE_FFMPEG_AVCODEC_H=n
+ 	else
+-		check_header "ffmpeg/avcodec.h" || return $?
++		check_header "ffmpeg/avcodec.h" $FFMPEG_CFLAGS || return $?
+ 	fi
+ 	return 0
+ }
+-- 
+1.7.5.1
+
