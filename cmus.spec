@@ -1,5 +1,5 @@
 Name:           cmus
-Version:        2.3.5
+Version:        2.4.0
 Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
@@ -68,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Apr 25 2011 Johannes Weißl <jargon@molb.org> - 2.4.0-1
+- New upstream release.
+
 * Wed Apr 20 2011 Johannes Weißl <jargon@molb.org> - 2.3.5-1
 - New upstream release
 
