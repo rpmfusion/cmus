@@ -1,13 +1,11 @@
 Name:           cmus
-Version:        2.4.0
-Release:        2%{?dist}
+Version:        2.4.2
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://cmus.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/cmus/cmus-v%{version}.tar.bz2
-# Temporary patch to fix ffmpeg header detection; will be fixed in 2.4.1:
-Patch0:		cmus-2.4.0-configure-fix-ffmpeg-detect.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel
@@ -34,7 +32,6 @@ other UNIX-like operating systems.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch0 -p1
 
 
 %build
@@ -71,6 +68,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jul 26 2011 Conrad Meyer <konrad@tylerc.org> - 2.4.2-1
+- Bump to latest version
+- Drop ffmpeg patch (fixed in 2.4.1+)
+- Fixes some bugs
+
 * Wed May 11 2011 Conrad Meyer <konrad@tylerc.org> - 2.4.0-2
 - Include configure patch to find ffmpeg.
 
