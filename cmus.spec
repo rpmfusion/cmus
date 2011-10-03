@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -68,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Oct 03 2011 Nicolas Chauvet <kwizart@gmail.com> - 2.4.2-2
+- Rebuilt for FFmpeg-0.8
+
 * Tue Jul 26 2011 Conrad Meyer <konrad@tylerc.org> - 2.4.2-1
 - Bump to latest version
 - Drop ffmpeg patch (fixed in 2.4.1+)
