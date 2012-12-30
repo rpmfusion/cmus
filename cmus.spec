@@ -1,6 +1,6 @@
 Name:           cmus
-Version:        2.4.2
-Release:        4%{?dist}
+Version:        2.5.0
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -13,6 +13,7 @@ BuildRequires:  faad2-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  flac-devel
 BuildRequires:  libao-devel
+BuildRequires:  libcue-devel
 BuildRequires:  libmad-devel
 BuildRequires:  libmodplug-devel
 BuildRequires:  libmp4v2-devel
@@ -68,6 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Dec 30 2012 Nicolas Chauvet <kwizart@gmail.com> - 2.5.0-1
+- Update to 2.5.0
+- Add BR libcue-devel
+
 * Tue Feb 28 2012 Nicolas Chauvet <kwizart@gmail.com> - 2.4.2-4
 - Rebuilt for x264/FFmpeg
 
