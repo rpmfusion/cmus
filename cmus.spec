@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -69,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Aug 15 2013 Nicolas Chauvet <kwizart@gmail.com> - 2.5.0-3
+- Rebuilt for FFmpeg 2.0.x
+
 * Sun May 26 2013 Nicolas Chauvet <kwizart@gmail.com> - 2.5.0-2
 - Rebuilt for x264/FFmpeg
 
