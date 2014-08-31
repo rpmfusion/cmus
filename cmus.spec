@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.5.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -69,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 2.5.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Mon Sep 30 2013 Nicolas Chauvet <kwizart@gmail.com> - 2.5.0-5
 - Rebuilt
 
