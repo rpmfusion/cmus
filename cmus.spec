@@ -1,12 +1,11 @@
 Name:           cmus
-Version:        2.5.0
-Release:        6%{?dist}
+Version:        2.7.1
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
-URL:            http://cmus.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/cmus/cmus-v%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+URL:            https://cmus.github.io/
+Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
@@ -19,27 +18,49 @@ BuildRequires:  libmodplug-devel
 BuildRequires:  libmp4v2-devel
 BuildRequires:  libmpcdec-devel
 BuildRequires:  libvorbis-devel
-BuildRequires:  wavpack-devel
+BuildRequires:  opusfile-devel
 BuildRequires:  pulseaudio-libs-devel
+BuildRequires:  wavpack-devel
 
 BuildRequires:  ncurses-devel
 
 
 %description
-cmus is a small and fast text mode music player for Linux and many
-other UNIX-like operating systems.
-
+cmus is a small, fast and powerful console music player for Unix-like
+operating systems
 
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q
 
 
 %build
 ./configure prefix=%{_prefix} bindir=%{_bindir} datadir=%{_datadir} \
   libdir=%{_libdir} mandir=%{_mandir} \
   exampledir=%{_datadir}/%{name}/examples \
-  CONFIG_ROAR=n CONFIG_ARTS=n CONFIG_SUN=n \
+  CONFIG_AAC=y \
+  CONFIG_ALSA=y \
+  CONFIG_AO=y \
+  CONFIG_ARTS=n \
+  CONFIG_CDIO=n \
+  CONFIG_CUE=y \
+  CONFIG_FFMPEG=y \
+  CONFIG_FLAC=y \
+  CONFIG_JACK=n \
+  CONFIG_MAD=y \
+  CONFIG_MIKMOD=n \
+  CONFIG_MODPLUG=y \
+  CONFIG_MP4=y \
+  CONFIG_MPC=y \
+  CONFIG_OPUS=y \
+  CONFIG_OSS=n \
+  CONFIG_PULSE=y \
+  CONFIG_ROAR=n \
+  CONFIG_SUN=n \
+  CONFIG_VORBIS=y \
+  CONFIG_WAV=y \
+  CONFIG_WAVEOUT=n \
+  CONFIG_WAVPACK=y \
   CFLAGS="%{optflags}"
 make %{?_smp_mflags} V=2
 
@@ -52,12 +73,7 @@ mv $RPM_BUILD_ROOT%{_datadir}/%{name}/examples .
 chmod -x examples/*
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
 %files
-%defattr(-,root,root,-)
 %doc COPYING AUTHORS examples
 %{_bindir}/%{name}
 %{_bindir}/cmus-remote
@@ -69,6 +85,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Dec 04 2015 Sérgio Basto <sergio@serjux.com> - 2.7.1-1
+- Update to 2.7.1
+
+* Thu Jun 04 2015 Markus Rothe <markusr815@gmail.com> - 2.6.0-1
+- Update to 2.6.0
+
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 2.5.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
