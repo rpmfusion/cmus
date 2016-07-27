@@ -1,11 +1,13 @@
 Name:           cmus
 Version:        2.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            https://cmus.github.io/
 Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+# patch from https://github.com/mahkoh/cmus/commits/ffmpeg_legacy
+Patch0:         new_ffmpeg.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
@@ -32,6 +34,7 @@ operating systems
 
 %prep
 %setup -q
+%patch0 -p1
 
 
 %build
@@ -85,6 +88,9 @@ chmod -x examples/*
 
 
 %changelog
+* Wed Jul 27 2016 Leigh Scott <leigh123linux@googlemail.com> - 2.7.1-2
+- patch for newer ffmpeg
+
 * Fri Dec 04 2015 Sérgio Basto <sergio@serjux.com> - 2.7.1-1
 - Update to 2.7.1
 
