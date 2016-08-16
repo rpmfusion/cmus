@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.7.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -14,11 +14,13 @@ BuildRequires:  faad2-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  flac-devel
 BuildRequires:  libao-devel
+BuildRequires:  libcddb-devel
 BuildRequires:  libcue-devel
 BuildRequires:  libmad-devel
 BuildRequires:  libmodplug-devel
 BuildRequires:  libmp4v2-devel
 BuildRequires:  libmpcdec-devel
+BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  opusfile-devel
 BuildRequires:  pulseaudio-libs-devel
@@ -89,6 +91,9 @@ chmod -x examples/*
 
 
 %changelog
+* Tue Aug 16 2016 Leigh Scott <leigh123linux@googlemail.com> - 2.7.1-4
+- Add build requires libsamplerate-devel and libcddb-devel
+
 * Tue Aug 16 2016 Leigh Scott <leigh123linux@googlemail.com> - 2.7.1-3
 - Fix hardening
 - Spec file fixes (rfbz#4194)
