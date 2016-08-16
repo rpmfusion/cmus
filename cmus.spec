@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -33,8 +33,7 @@ operating systems
 
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 
 %build
@@ -64,30 +63,36 @@ operating systems
   CONFIG_WAV=y \
   CONFIG_WAVEOUT=n \
   CONFIG_WAVPACK=y \
-  CFLAGS="%{optflags}"
-make %{?_smp_mflags} V=2
+  CFLAGS="${RPM_OPT_FLAGS}" \
+  LDFLAGS="${RPM_LD_FLAGS}"
+%{make_build} V=2
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+%{make_install}
 
 mv $RPM_BUILD_ROOT%{_datadir}/%{name}/examples .
 chmod -x examples/*
 
 
 %files
-%doc COPYING AUTHORS examples
+%doc AUTHORS examples
+%license COPYING
 %{_bindir}/%{name}
 %{_bindir}/cmus-remote
-%{_libdir}/%{name}
-%{_datadir}/%{name}
+%{_libdir}/%{name}/
+%{_datadir}/%{name}/
 %{_mandir}/man1/cmus-remote.1*
 %{_mandir}/man1/cmus.1*
 %{_mandir}/man7/cmus-tutorial.7*
 
 
 %changelog
+* Tue Aug 16 2016 Leigh Scott <leigh123linux@googlemail.com> - 2.7.1-3
+- Fix hardening
+- Spec file fixes (rfbz#4194)
+
 * Wed Jul 27 2016 Leigh Scott <leigh123linux@googlemail.com> - 2.7.1-2
 - patch for newer ffmpeg
 
