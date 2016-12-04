@@ -1,13 +1,12 @@
 Name:           cmus
-Version:        2.7.1
-Release:        4%{?dist}
+Version:        2.8.0
+Release:        0.1.rc0%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            https://cmus.github.io/
-Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-# patch from https://github.com/mahkoh/cmus/commits/ffmpeg_legacy
-Patch0:         new_ffmpeg.patch
+Source0:        https://github.com/cmus/%{name}/archive/v%{version}-rc0/%{name}-%{version}-rc0.tar.gz
+
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
@@ -35,7 +34,7 @@ operating systems
 
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}-rc0
 
 
 %build
@@ -91,6 +90,9 @@ chmod -x examples/*
 
 
 %changelog
+* Sun Dec 04 2016 leigh scott <leigh123linux@googlemail.com> - 2.8.0-0.1.rc0
+- Update to 2.8.0-rc0
+
 * Tue Aug 16 2016 Leigh Scott <leigh123linux@googlemail.com> - 2.7.1-4
 - Add build requires libsamplerate-devel and libcddb-devel
 
