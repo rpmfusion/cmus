@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.8.0
-Release:        0.1.rc0%{?dist}
+Release:        0.2.rc0%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -23,6 +23,7 @@ BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  opusfile-devel
 BuildRequires:  pulseaudio-libs-devel
+BuildRequires:  systemd-devel
 BuildRequires:  wavpack-devel
 
 BuildRequires:  ncurses-devel
@@ -55,6 +56,7 @@ operating systems
   CONFIG_MODPLUG=y \
   CONFIG_MP4=y \
   CONFIG_MPC=y \
+  CONFIG_MPRIS=y \
   CONFIG_OPUS=y \
   CONFIG_OSS=n \
   CONFIG_PULSE=y \
@@ -70,7 +72,6 @@ operating systems
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %{make_install}
 
 mv $RPM_BUILD_ROOT%{_datadir}/%{name}/examples .
@@ -90,6 +91,10 @@ chmod -x examples/*
 
 
 %changelog
+* Wed Mar 01 2017 Leigh Scott <leigh123linux@googlemail.com> - 2.8.0-0.2.rc0
+- Add build requires systemd-devel
+- Enable MPRIS support
+
 * Sun Dec 04 2016 leigh scott <leigh123linux@googlemail.com> - 2.8.0-0.1.rc0
 - Update to 2.8.0-rc0
 
