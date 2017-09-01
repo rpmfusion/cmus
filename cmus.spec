@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.8.0
-Release:        0.5.rc0%{?dist}
+Release:        0.6.rc0%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -72,7 +72,8 @@ operating systems
 
 
 %install
-%{make_install}
+# Using the make_install macro causes the build to fail
+make install DESTDIR=$RPM_BUILD_ROOT
 
 mv $RPM_BUILD_ROOT%{_datadir}/%{name}/examples .
 chmod -x examples/*
@@ -91,6 +92,9 @@ chmod -x examples/*
 
 
 %changelog
+* Fri Sep 01 2017 Leigh Scott <leigh123linux@googlemail.com> - 2.8.0-0.6.rc0
+- Fix install issue
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 2.8.0-0.5.rc0
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
