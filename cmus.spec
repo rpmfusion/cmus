@@ -6,7 +6,7 @@ Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            https://cmus.github.io/
 Source0:        https://github.com/cmus/%{name}/archive/v%{version}-rc0/%{name}-%{version}-rc0.tar.gz
-
+Patch0:         ffmpeg35_buildfix.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
