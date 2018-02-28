@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.8.0
-Release:        0.7.rc0%{?dist}
+Release:        0.8.rc0%{?dist}
 Summary:        Ncurses-Based Music Player
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -92,6 +92,9 @@ chmod -x examples/*
 
 
 %changelog
+* Wed Feb 28 2018 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 2.8.0-0.8.rc0
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Thu Jan 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 2.8.0-0.7.rc0
 - Rebuilt for ffmpeg-3.5 git
 
