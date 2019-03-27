@@ -1,12 +1,10 @@
 Name:           cmus
 Version:        2.8.0
-Release:        0.12.rc0%{?dist}
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
-Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            https://cmus.github.io/
-Source0:        https://github.com/cmus/%{name}/archive/v%{version}-rc0/%{name}-%{version}-rc0.tar.gz
-Patch0:         ffmpeg35_buildfix.patch
+Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
@@ -25,7 +23,6 @@ BuildRequires:  opusfile-devel
 BuildRequires:  pulseaudio-libs-devel
 BuildRequires:  systemd-devel
 BuildRequires:  wavpack-devel
-
 BuildRequires:  ncurses-devel
 
 
@@ -35,7 +32,7 @@ operating systems
 
 
 %prep
-%autosetup -p1 -n %{name}-%{version}-rc0
+%autosetup -p1
 
 
 %build
@@ -92,6 +89,9 @@ chmod -x examples/*
 
 
 %changelog
+* Wed Mar 27 2019 Leigh Scott <leigh123linux@googlemail.com> - 2.8.0-1
+- Update to 2.8.0 release
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.8.0-0.12.rc0
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
