@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.8.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
@@ -89,6 +89,9 @@ chmod -x examples/*
 
 
 %changelog
+* Tue Feb 04 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.8.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Tue Aug 06 2019 Leigh Scott <leigh123linux@gmail.com> - 2.8.0-2
 - Rebuild for new ffmpeg version
 
