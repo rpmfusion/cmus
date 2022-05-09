@@ -1,6 +1,6 @@
 Name:           cmus
 Version:        2.9.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
@@ -15,7 +15,6 @@ BuildRequires:  libcddb-devel
 BuildRequires:  libcue-devel
 BuildRequires:  libmad-devel
 BuildRequires:  libmodplug-devel
-BuildRequires:  libmp4v2-devel
 BuildRequires:  libmpcdec-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
@@ -51,7 +50,6 @@ operating systems
   CONFIG_MAD=y \
   CONFIG_MIKMOD=n \
   CONFIG_MODPLUG=y \
-  CONFIG_MP4=y \
   CONFIG_MPC=y \
   CONFIG_MPRIS=y \
   CONFIG_OPUS=y \
@@ -89,6 +87,9 @@ chmod -x examples/*
 
 
 %changelog
+* Mon May 09 2022 Sérgio Basto <sergio@serjux.com> - 2.9.1-6
+- Remove libmp4v2 dependency
+
 * Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 2.9.1-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
