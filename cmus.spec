@@ -1,6 +1,6 @@
 Name:           cmus
-Version:        2.9.1
-Release:        6%{?dist}
+Version:        2.10.0
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
@@ -87,6 +87,9 @@ chmod -x examples/*
 
 
 %changelog
+* Wed Jul 06 2022 Leigh Scott <leigh123linux@gmail.com> - 2.10.0-1
+- Update to 2.10.0 release
+
 * Mon May 09 2022 Sérgio Basto <sergio@serjux.com> - 2.9.1-6
 - Remove libmp4v2 dependency
 
