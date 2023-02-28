@@ -5,6 +5,7 @@ Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
 Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         ffmpeg6.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
