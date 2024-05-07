@@ -1,11 +1,21 @@
+%global commit0 89f1c935cbc0a345b796507bdc52c76086ecc26b
+%global date 20240324
+%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+#global tag %{version}
+
+%global surl https://github.com/cmus/cmus
+
 Name:           cmus
-Version:        2.10.0
-Release:        8%{?dist}
+Version:        2.10.1
+Release:        0.1%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
-Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         ffmpeg6.patch
+%if 0%{?tag:1}
+Source0:        %surl/archive/v%{version}/%{name}-%{version}.tar.gz
+%else
+Source0:        %surl/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+%endif
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
@@ -32,7 +42,11 @@ operating systems
 
 
 %prep
+%if 0%{?tag:1}
 %autosetup -p1
+%else
+%autosetup -p1 -n %{name}-%{commit0}
+%endif
 
 
 %build
@@ -88,6 +102,9 @@ chmod -x examples/*
 
 
 %changelog
+* Tue May 07 2024 Leigh Scott <leigh123linux@gmail.com> - 2.10.1-0.1.20240324git89f1c93
+- Update to git snapshot
+
 * Sat Feb 03 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 2.10.0-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
