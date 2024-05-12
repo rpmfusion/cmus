@@ -1,13 +1,13 @@
 %global commit0 89f1c935cbc0a345b796507bdc52c76086ecc26b
 %global date 20240324
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-#global tag %{version}
+%global tag %{version}
 
 %global surl https://github.com/cmus/cmus
 
 Name:           cmus
-Version:        2.10.1
-Release:        0.1%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Version:        2.11.0
+Release:        1%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
@@ -102,6 +102,9 @@ chmod -x examples/*
 
 
 %changelog
+* Sun May 12 2024 Leigh Scott <leigh123linux@gmail.com> - 2.11.0-1
+- Update to 2.11.0
+
 * Tue May 07 2024 Leigh Scott <leigh123linux@gmail.com> - 2.10.1-0.1.20240324git89f1c93
 - Update to git snapshot
 
