@@ -12,10 +12,11 @@ Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
 %if 0%{?tag:1}
-Source0:        %surl/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{surl}/archive/v%{version}/%{name}-%{version}.tar.gz
 %else
-Source0:        %surl/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0:        %{surl}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 %endif
+Patch0:         %{surl}/commit/3810797e4afb4272d2623a8745a15eb32fdcd9a3.patch#/ffmpeg8.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel

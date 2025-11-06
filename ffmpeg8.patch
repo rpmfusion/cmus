@@ -1,0 +1,25 @@
+From 3810797e4afb4272d2623a8745a15eb32fdcd9a3 Mon Sep 17 00:00:00 2001
+From: ihy123 <aladinandreyy@gmail.com>
+Date: Sun, 24 Aug 2025 19:16:57 +0300
+Subject: [PATCH] ip/ffmpeg: fix building for ffmpeg 8.0
+
+avcodec_close() can be safely removed because avcodec_free_context()
+is its replacement since 2016. See ffmpeg commit 2ef6dab0a79
+
+Builds with v3.3.9 v4.0.6 v6.1.3 v7.1.1 v8.0
+---
+ ip/ffmpeg.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/ip/ffmpeg.c b/ip/ffmpeg.c
+index fc748951..2cb07671 100644
+--- a/ip/ffmpeg.c
++++ b/ip/ffmpeg.c
+@@ -223,7 +223,6 @@ static int ffmpeg_init_swr_frame(struct ffmpeg_private *priv,
+ 
+ static void ffmpeg_free(struct ffmpeg_private *priv)
+ {
+-	avcodec_close(priv->codec_ctx);
+ 	avcodec_free_context(&priv->codec_ctx);
+ 	avformat_close_input(&priv->format_ctx);
+ 
