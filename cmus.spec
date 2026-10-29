@@ -6,8 +6,8 @@
 %global surl https://github.com/cmus/cmus
 
 Name:           cmus
-Version:        2.12.0
-Release:        8%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Version:        2.13.0
+Release:        1%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
@@ -16,8 +16,6 @@ Source0:        %{surl}/archive/v%{version}/%{name}-%{version}.tar.gz
 %else
 Source0:        %{surl}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 %endif
-# https://salsa.debian.org/multimedia-team/cmus/-/commit/b6fff8c1b30faf5844dd27f1f1461a840ad9724b
-Patch0:         ffmpeg8.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  faad2-devel
@@ -77,17 +75,15 @@ operating systems
   CONFIG_VORBIS=y \
   CONFIG_WAV=y \
   CONFIG_WAVEOUT=n \
-  CONFIG_WAVPACK=y \
-  CFLAGS="${RPM_OPT_FLAGS}" \
-  LDFLAGS="${RPM_LD_FLAGS}"
+  CONFIG_WAVPACK=y
 %{make_build} V=2
 
 
 %install
 # Using the make_install macro causes the build to fail
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=%{buildroot}
 
-mv $RPM_BUILD_ROOT%{_datadir}/%{name}/examples .
+mv %{buildroot}%{_datadir}/%{name}/examples .
 chmod -x examples/*
 
 
@@ -104,6 +100,9 @@ chmod -x examples/*
 
 
 %changelog
+* Thu Oct 29 2026 Leigh Scott <leigh123linux@gmail.com> - 2.13.0-1
+- Update to 2.13.0
+
 * Sat Aug 22 2026 Leigh Scott <leigh123linux@gmail.com> - 2.12.0-8
 - Rebuild for new ffmpeg
 
